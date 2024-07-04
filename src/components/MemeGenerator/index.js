@@ -81,10 +81,10 @@ class MemeGenerator extends Component {
     console.log(isFormSubmitted)
     return (
       <AppContainer>
-        <MemeContainer>
+        <MemeContainer data-testid="meme">
           <MainHeading>Meme Generator</MainHeading>
           {isFormSubmitted && (
-            <MobileContainerView data-testid="meme" imageUrl={imgUrl}>
+            <MobileContainerView imageUrl={imgUrl}>
               <InputText fontValue={font}>{topText}</InputText>
               <InputText fontValue={font}>{bottomText}</InputText>
             </MobileContainerView>
@@ -93,17 +93,25 @@ class MemeGenerator extends Component {
           <FormContainer onSubmit={this.onFormSubmit}>
             <InputContainer>
               <InputLabel htmlFor="imageUrl">Image URL</InputLabel>
-              <Input id="imageUrl" onChange={this.imageUrl} />
+              <Input
+                id="imageUrl"
+                onChange={this.imageUrl}
+                value={this.imageUrl}
+              />
             </InputContainer>
 
             <InputContainer>
               <InputLabel htmlFor="topText">Top Text</InputLabel>
-              <Input id="topText" onChange={this.topText} />
+              <Input id="topText" onChange={this.topText} value={topText} />
             </InputContainer>
 
             <InputContainer>
               <InputLabel htmlFor="bottomText">Bottom Text</InputLabel>
-              <Input id="bottomText" onChange={this.bottomText} />
+              <Input
+                id="bottomText"
+                onChange={this.bottomText}
+                value={bottomText}
+              />
             </InputContainer>
 
             <InputLabel htmlFor="selectId">Font size</InputLabel>
@@ -123,7 +131,7 @@ class MemeGenerator extends Component {
           </FormContainer>
         </MemeContainer>
         {isFormSubmitted && (
-          <DesktopContainer data-testid="meme" imageUrl={imgUrl}>
+          <DesktopContainer imageUrl={imgUrl}>
             <InputText fontValue={font}>{topText}</InputText>
             <InputText fontValue={font}>{bottomText}</InputText>
           </DesktopContainer>
